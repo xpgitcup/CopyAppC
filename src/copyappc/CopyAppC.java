@@ -47,7 +47,9 @@ public class CopyAppC {
             }
         }
 
-        //
+        System.out.printf("-------------------------------------------------------------------\n");
+        
+        //处理配置文件
         CopyAppC mainObject = new CopyAppC();
         String currentPath = mainObject.getCurrentPath();
         //读取配置文件，获取种子程序的位置
@@ -70,6 +72,15 @@ public class CopyAppC {
         } else {
             System.out.println("SeedApplication.ini 文件不存在！");
         }
+
+        System.out.printf("-------------------------------------------------------------------\n");
+        
+        TargetApplication targetApplication = new TargetApplication();
+        targetApplication.processArgs(args);
+        targetApplication.copyApplication(mainObject.getSeedProperties());
+        targetApplication.updateProjectName();
+        targetApplication.updateProjectFile();
+        
     }
 
     /**
