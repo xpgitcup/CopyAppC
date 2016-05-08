@@ -57,7 +57,7 @@ public class CopyAppC {
                 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
                 mainObject.getSeedProperties().load(isr);
                 mainObject.getSeedProperties().stringPropertyNames().stream().forEach((_item) -> {
-                    System.out.println(_item);
+                    System.out.printf("%s:%s\n", _item, mainObject.seedProperties.get(_item));
                 });
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(CopyAppC.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,7 +66,7 @@ public class CopyAppC {
             } catch (IOException ex) {
                 Logger.getLogger(CopyAppC.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println("当前目录：${iniFile.absolutePath}");
+            System.out.printf("当前目录：%s\n", currentPath);
         } else {
             System.out.println("SeedApplication.ini 文件不存在！");
         }
